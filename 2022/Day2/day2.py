@@ -23,7 +23,7 @@ round_scores = {
     "C Z": 6  # 3 + 3
 }
 
-with open("day2-a.txt", 'r') as file:
+with open("day2.txt", 'r') as file:
     data = [i for i in file.read().strip().split("\n")]
 
 for gameRound in data:

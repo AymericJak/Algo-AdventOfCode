@@ -1,6 +1,6 @@
 import re
 
-with open("day4-a.txt", 'r') as file:
+with open("day4.txt", 'r') as file:
     data = [i for i in file.read().strip().split("\n")]
 
 # PART A
