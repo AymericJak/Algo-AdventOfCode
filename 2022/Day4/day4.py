@@ -1,19 +1,9 @@
 import re
 
-data = """2-4,6-8
-2-3,4-5
-5-7,7-9
-2-8,3-7
-6-6,4-6
-2-6,4-8"""
-
-# PART A
-
-l = data.split('\n')
-
 with open("day4-a.txt", 'r') as file:
     data = [i for i in file.read().strip().split("\n")]
 
+# PART A
 
 fullyContainsNumber = 0
 for section in data:
@@ -29,3 +19,24 @@ for section in data:
             fullyContainsNumber += 1
 
 print(fullyContainsNumber)
+
+# PART B
+
+overlappingAssignment = 0
+for section in data:
+    numbers = list(map(int,re.split('-|,', section)))
+    assignment1 = [i for i in range(numbers[0], numbers[1]+1)]
+    assignment2 = [i for i in range(numbers[2], numbers[3]+1)]
+
+    if len(assignment1) >= len(assignment2):
+        for elem in assignment2:
+            if elem in assignment1:
+                overlappingAssignment += 1
+                break
+    else:
+        for elem in assignment1:
+            if elem in assignment2:
+                overlappingAssignment += 1
+                break
+
+print(overlappingAssignment)
