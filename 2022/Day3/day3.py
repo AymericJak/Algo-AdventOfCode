@@ -5,15 +5,14 @@ with open("day3-a.txt", 'r') as file:
 
 # PART A
 
-lettersValue = {letter:i+1 for i,letter in enumerate(string.ascii_letters)}
+lettersValue = {letter: i + 1 for i, letter in enumerate(string.ascii_letters)}
 commonLetters = []
 
 for item in data:
-    itemLength = int(len(item)/2)
+    itemLength = int(len(item) / 2)
     part1 = set(item[0:itemLength])
     part2 = set(item[itemLength:])
     commonLetters.append(part1.intersection(part2).pop())
-
 
 somme = 0
 for letter in commonLetters:
@@ -24,7 +23,6 @@ print(somme)
 # PART B
 
 commonLetters2 = []
-
 
 for index, item in enumerate(data):
     index += 1
@@ -37,7 +35,6 @@ for index, item in enumerate(data):
     elif index % 3 == 0:
         liste.append(item)
         commonLetters2.append((liste[0] & liste[1] & liste[2]).pop())
-
 
 sommeB = 0
 for letter in commonLetters2:

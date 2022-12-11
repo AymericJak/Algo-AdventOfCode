@@ -7,9 +7,9 @@ with open("day4-a.txt", 'r') as file:
 
 fullyContainsNumber = 0
 for section in data:
-    numbers = list(map(int,re.split('-|,', section)))
-    assignment1 = [i for i in range(numbers[0], numbers[1]+1)]
-    assignment2 = [i for i in range(numbers[2], numbers[3]+1)]
+    numbers = list(map(int, re.split('-|,', section)))
+    assignment1 = [i for i in range(numbers[0], numbers[1] + 1)]
+    assignment2 = [i for i in range(numbers[2], numbers[3] + 1)]
 
     if len(assignment1) >= len(assignment2):
         if all(number in assignment1 for number in assignment2):
@@ -24,9 +24,9 @@ print(fullyContainsNumber)
 
 overlappingAssignment = 0
 for section in data:
-    numbers = list(map(int,re.split('-|,', section)))
-    assignment1 = [i for i in range(numbers[0], numbers[1]+1)]
-    assignment2 = [i for i in range(numbers[2], numbers[3]+1)]
+    numbers = list(map(int, re.split('-|,', section)))
+    assignment1 = [i for i in range(numbers[0], numbers[1] + 1)]
+    assignment2 = [i for i in range(numbers[2], numbers[3] + 1)]
 
     if len(assignment1) >= len(assignment2):
         for elem in assignment2:
