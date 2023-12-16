@@ -9,26 +9,21 @@ def get_card_informations(card):
     return card_number, winning_numbers, own_numbers
 
 
-def calculate_card_score(card: str) -> int:
-    card_number, winning_numbers, own_numbers = get_card_informations(card)
-    score = 0
-    for number in own_numbers:
-        if number in winning_numbers:
-            if score == 0:
-                score = 1
-            else:
-                score *= 2
-    return score
-
-
-def calculate_final_score(card_list: list) -> int:
-    score = 0
+def get_collection_card(card_list: list) -> dict:
+    card_collection = {i: 1 for i in range(1, len(card_list) + 1)}
     for card in card_list:
-        score += calculate_card_score(card)
-    return score
+        card_number, winning_numbers, own_numbers = get_card_informations(card)
+        number_matching = len(winning_numbers.intersection(own_numbers))
+        for i in range(card_number + 1, card_number + number_matching + 1):
+            card_collection[i] += card_collection[card_number]
+    return card_collection
 
 
-# --- Example ---
+def get_number_of_cards(card_collection: dict) -> int:
+    return sum(card_collection.values())
+
+
+# --- Example B ---
 example = [
     "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
     "Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19",
@@ -38,10 +33,10 @@ example = [
     "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
 ]
 
-print("Example A:", calculate_final_score(example))
+print("Example B:", get_number_of_cards(get_collection_card(example)))
 
-# --- Problem A ---
+# --- Problem B ---
 with open("input_day_4.txt", 'r') as file:
     data = file.read()
 lines = data.split('\n')
-print("Problem A:", calculate_final_score(lines))
+print("Problem B:", get_number_of_cards(get_collection_card(lines)))
