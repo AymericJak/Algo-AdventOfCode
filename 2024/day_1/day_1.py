@@ -25,9 +25,9 @@ print("Part A answer :", distances)
 # PART B
 
 similarity_score = 0
+right_counter = collections.Counter(right_numbers)
 
 for index in range(len(left_numbers)):
-    counter = collections.Counter(right_numbers)
-    similarity_score += left_numbers[index] * counter[left_numbers[index]]
+    similarity_score += left_numbers[index] * right_counter[left_numbers[index]]
 
 print("Part B answer :", similarity_score)
