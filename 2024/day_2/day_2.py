@@ -15,7 +15,8 @@ with open("input_day_2.txt", 'r') as file:
 def is_valid_report(report):
     gaps = [a - b for a, b in itertools.pairwise(report)]
 
-    if (all(gap > 0 for gap in gaps) or all(gap < 0 for gap in gaps)) and all(abs(gap) <= 3 and gap != 0 for gap in gaps):
+    if (all(gap > 0 for gap in gaps) or all(gap < 0 for gap in gaps)) and all(
+            abs(gap) <= 3 and gap != 0 for gap in gaps):
         return True
     return False
 
@@ -31,7 +32,6 @@ for report in data:
 
 print("Part A answer :", nb_safe_reports)
 
-
 # PART B
 
 
@@ -42,7 +42,7 @@ for report in data:
         nb_safe_reports += 1
     else:
         for i in range(len(report)):
-            modified_report = report[:i] + report[i+1:]
+            modified_report = report[:i] + report[i + 1:]
             if is_valid_report(modified_report):
                 nb_safe_reports += 1
                 break
